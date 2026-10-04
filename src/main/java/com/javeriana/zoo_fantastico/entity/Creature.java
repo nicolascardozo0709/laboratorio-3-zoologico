@@ -31,6 +31,6 @@ public class Creature {
     private int dangerLevel;
     private String healthStatus;
     @ManyToOne
-    @JoinColumn(name = "zone.id")
+    @JoinColumn(name = "zone_id")
     private Zone zone;
 }

@@ -1,6 +1,7 @@
 package com.javeriana.zoo_fantastico.controller;
 import com.javeriana.zoo_fantastico.entity.Creature;
 import com.javeriana.zoo_fantastico.service.CreatureService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class CreatureController {
     }
     @PostMapping
     public ResponseEntity<Creature> createCreature(
-            @RequestBody Creature creature) {
+            @Valid @RequestBody Creature creature) {
         Creature newCreature =
                 creatureService.createCreature(creature);
         return ResponseEntity
@@ -35,7 +36,7 @@ public class CreatureController {
     @PutMapping("/{id}")
     public Creature updateCreature(
             @PathVariable Long id,
-            @RequestBody Creature updatedCreature) {
+            @Valid @RequestBody Creature updatedCreature) {
         return creatureService
                 .updateCreature(id, updatedCreature);
     }
